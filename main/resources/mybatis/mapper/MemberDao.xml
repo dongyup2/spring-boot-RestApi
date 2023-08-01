@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.study.springboot.dao.IMemberDao">
+
+	<select id="list" resultType="com.study.springboot.dto.MemberDto">
+		SELECT * FROM tbl_member
+	</select>
+	<select id="getMember" resultType="com.study.springboot.dto.MemberDto">
+		SELECT * FROM tbl_member WHERE mno = #{param1}
+	</select>
+	<insert id="insert">
+		INSERT INTO tbl_member (name, id, pw)
+		VALUES (#{member.name}, #{member.id}, #{member.pw})
+	</insert>
+	<update id="update">
+		UPDATE tbl_member SET 
+		<!-- name = #{member.name}, -->
+		pw = #{member.pw}
+		WHERE mno = #{member.mno} 
+	</update>
+	<delete id="delete">
+		DELETE FROM tbl_member WHERE mno = #{param1}
+	</delete>
+</mapper>
